@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>公告後台 — imMBA</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body class="admin-body">
+    <div class="admin-wrap">
+      <header class="admin-header">
+        <h1 class="admin-header__title">公告後台管理</h1>
+        <p class="admin-header__sub">
+          以<strong>中文</strong>為主填寫；英文由系統自動翻譯，請於儲存前確認或手動修正。資料儲存在
+          <code>data/announcements.json</code>。
+        </p>
+        <div class="admin-header__actions">
+          <a class="btn btn--outline admin-back" href="./">← 返回首頁</a>
+        </div>
+      </header>
+
+      <section class="admin-card" id="admin-login-section" aria-label="登入">
+        <h2 class="admin-card__title">登入</h2>
+        <p class="admin-muted">密碼預設為 <code>admin123</code>，或於啟動前設定環境變數 <code>ADMIN_PASSWORD</code>。</p>
+        <form id="admin-login-form" class="admin-form">
+          <label class="admin-label">
+            後台密碼
+            <input id="admin-password" class="admin-input" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="btn btn--primary" type="submit">登入</button>
+          <p id="admin-login-msg" class="admin-msg" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="admin-card admin-card--hidden" id="admin-panel" aria-label="公告管理">
+        <div class="admin-panel-head">
+          <h2 class="admin-card__title">公告列表</h2>
+          <button type="button" class="btn btn--primary" id="admin-logout">登出</button>
+        </div>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>日期</th>
+                <th>標籤</th>
+                <th>中文標題</th>
+                <th>英文標題</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="admin-tbody"></tbody>
+          </table>
+        </div>
+
+        <h3 class="admin-form-title" id="admin-form-heading">新增公告</h3>
+        <form id="admin-edit-form" class="admin-form admin-form--grid">
+          <input type="hidden" id="edit-id" value="" />
+          <p class="admin-muted admin-label--full admin-form-section">中文（必填）</p>
+          <label class="admin-label">
+            日期（YYYY-MM-DD）
+            <input id="edit-date" class="admin-input" type="date" required />
+          </label>
+          <label class="admin-label">
+            標籤（選填，中文）
+            <input id="edit-tag" class="admin-input" type="text" placeholder="可留空" />
+          </label>
+          <label class="admin-label admin-label--full">
+            中文標題
+            <input id="edit-title-zh" class="admin-input" type="text" required />
+          </label>
+          <div class="admin-form-actions admin-label--full">
+            <button type="button" class="btn btn--outline" id="admin-translate">
+              產生英文翻譯（預覽）
+            </button>
+          </div>
+          <p class="admin-muted admin-label--full admin-form-section">英文（自動產生，請確認無誤後再儲存）</p>
+          <label class="admin-label admin-label--full">
+            英文標題
+            <input id="edit-title-en" class="admin-input" type="text" placeholder="可留空，儲存時會自動翻譯" />
+          </label>
+          <label class="admin-label admin-label--full">
+            英文標籤
+            <input id="edit-tag-en" class="admin-input" type="text" placeholder="可留空，有中文標籤時會自動翻譯" />
+          </label>
+          <div class="admin-form-actions">
+            <button class="btn btn--primary" type="submit" id="admin-submit">新增</button>
+            <button type="button" class="btn btn--outline" id="admin-cancel-edit">取消編輯</button>
+          </div>
+          <p id="admin-form-msg" class="admin-msg admin-label--full" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </div>
+
+    <script src="./assets/js/admin.js"></script>
+  </body>
+</html>
