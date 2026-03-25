@@ -19,6 +19,11 @@ function closeAllDropdowns(exceptEl) {
   });
 }
 
+/** 寬螢幕且為滑鼠操作時，下拉改由 CSS :hover 控制，點擊不切換 */
+function useHoverDropdowns() {
+  return window.matchMedia("(min-width: 981px) and (hover: hover) and (pointer: fine)").matches;
+}
+
 function setupNav() {
   const nav = document.querySelector(".nav");
   const toggle = document.getElementById("nav-toggle");
@@ -33,15 +38,38 @@ function setupNav() {
 
   const dropdownButtons = document.querySelectorAll(".nav__item.has-dropdown > .nav__btn");
   dropdownButtons.forEach((btn) => {
+    const item = btn.closest(".nav__item.has-dropdown");
+    if (!item) return;
+
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const item = btn.closest(".nav__item.has-dropdown");
-      if (!item) return;
-
+      if (useHoverDropdowns()) return;
       const willOpen = !item.classList.contains("is-open");
       closeAllDropdowns(item);
       item.classList.toggle("is-open", willOpen);
       btn.setAttribute("aria-expanded", String(willOpen));
+    });
+
+    item.addEventListener("mouseenter", () => {
+      if (!useHoverDropdowns()) return;
+      btn.setAttribute("aria-expanded", "true");
+    });
+    item.addEventListener("mouseleave", () => {
+      if (!useHoverDropdowns()) return;
+      if (item.contains(document.activeElement)) return;
+      btn.setAttribute("aria-expanded", "false");
+    });
+    item.addEventListener("focusin", () => {
+      if (!useHoverDropdowns()) return;
+      btn.setAttribute("aria-expanded", "true");
+    });
+    item.addEventListener("focusout", () => {
+      if (!useHoverDropdowns()) return;
+      setTimeout(() => {
+        if (!item.contains(document.activeElement)) {
+          btn.setAttribute("aria-expanded", "false");
+        }
+      }, 0);
     });
 
     btn.addEventListener("keydown", (e) => {

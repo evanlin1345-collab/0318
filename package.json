@@ -1,0 +1,13 @@
+{
+  "name": "immba-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "imMBA static site with announcement API and admin",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

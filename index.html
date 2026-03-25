@@ -19,38 +19,7 @@
       <span class="lang-en">Skip to main content</span>
     </a>
 
-    <div class="top-bar" role="banner">
-      <div class="container top-bar__inner">
-        <div class="top-bar__brand">
-          <span class="lang-zh">輔仁大學管理學院 imMBA</span>
-          <span class="lang-en">College of Management, Fu Jen Catholic University – imMBA</span>
-        </div>
-
-        <div class="top-bar__actions" aria-label="Site utilities">
-          <div class="lang-switch" aria-label="Language switch">
-            <button id="lang-zh-btn" class="lang-switch__btn is-active" type="button">
-              中
-            </button>
-            <span class="lang-switch__sep">|</span>
-            <button id="lang-en-btn" class="lang-switch__btn" type="button">
-              EN
-            </button>
-          </div>
-
-          <form class="search" role="search" aria-label="Site search">
-            <input
-              class="search__input"
-              type="search"
-              name="q"
-              placeholder="Search"
-              autocomplete="off"
-            />
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <header class="header">
+    <header class="header" role="banner">
       <div class="header__row header__row--title">
         <div class="container header__inner header__inner--title">
           <a class="logo" href="#" aria-label="輔仁大學 國際經營管理碩士班 imMBA">
@@ -69,16 +38,31 @@
             </span>
           </a>
 
-          <div class="header-title-links" aria-label="Quick header links">
-            <a class="header-title-link" href="#">
-              <span class="lang-zh">公告</span><span class="lang-en">News</span>
-            </a>
-            <a class="header-title-link" href="#">
-              <span class="lang-zh">表格下載</span><span class="lang-en">Downloads</span>
-            </a>
-            <a class="header-title-link" href="#">
-              <span class="lang-zh">輔大管理學院</span><span class="lang-en">College of Management</span>
-            </a>
+          <div class="header__end">
+            <div class="header-title-links" aria-label="Quick header links">
+              <a class="header-title-link" href="#announcements-archive">
+                <span class="lang-zh">公告</span><span class="lang-en">News</span>
+              </a>
+              <a class="header-title-link" href="#">
+                <span class="lang-zh">輔大管理學院</span><span class="lang-en">College of Management</span>
+              </a>
+            </div>
+            <div class="header-utilities" aria-label="Site utilities">
+              <div class="lang-switch" aria-label="Language switch">
+                <button id="lang-zh-btn" class="lang-switch__btn is-active" type="button">中</button>
+                <span class="lang-switch__sep">|</span>
+                <button id="lang-en-btn" class="lang-switch__btn" type="button">EN</button>
+              </div>
+              <form class="search" role="search" aria-label="Site search">
+                <input
+                  class="search__input"
+                  type="search"
+                  name="q"
+                  placeholder="Search"
+                  autocomplete="off"
+                />
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -259,33 +243,16 @@
                     <span class="lang-en">Admissions, courses, and events updates</span>
                   </p>
                 </div>
-                <a class="card__link" href="#">
+                <a class="card__link" href="#announcements-archive">
                   <span class="lang-zh">更多公告</span><span class="lang-en">View all</span>
                 </a>
               </div>
-              <ul class="news">
+              <ul id="news-latest" class="news" aria-busy="true">
                 <li class="news__item">
                   <div class="news__left">
-                    <span class="tag">TOP</span>
-                    <span class="lang-zh">115碩士招生口試通知</span>
-                    <span class="lang-en">2026 Intake Oral Interview Notice</span>
+                    <span class="lang-zh">載入公告中…</span>
+                    <span class="lang-en">Loading…</span>
                   </div>
-                  <time class="news__date" datetime="2026-03-09">2026/03/09</time>
-                </li>
-                <li class="news__item">
-                  <div class="news__left">
-                    <span class="tag">Admissions</span>
-                    <span class="lang-zh">Fall 2026 外國學生申請入學 – 第一梯次</span>
-                    <span class="lang-en">Fall 2026 International Student Application – First Round</span>
-                  </div>
-                  <time class="news__date" datetime="2026-02-09">2026/02/09</time>
-                </li>
-                <li class="news__item">
-                  <div class="news__left">
-                    <span class="lang-zh">【在國際經管上課，是什麼感覺？】</span>
-                    <span class="lang-en">“What is it like to study in imMBA?”</span>
-                  </div>
-                  <time class="news__date" datetime="2026-02-04">2026/02/04</time>
                 </li>
               </ul>
             </article>
@@ -323,7 +290,6 @@
                 <li>
                   <a href="#"><span class="lang-zh">海外交換</span><span class="lang-en">Exchange Programs</span></a>
                 </li>
-                <li><a href="#"><span class="lang-zh">表格下載</span><span class="lang-en">Downloads</span></a></li>
               </ul>
             </section>
 
@@ -350,6 +316,30 @@
       </section>
     </main>
 
+    <section class="announcements-archive" id="announcements-archive" aria-label="All announcements">
+      <div class="container">
+        <div class="announcements-archive__head">
+          <h2 class="announcements-archive__title">
+            <span class="lang-zh">所有公告</span><span class="lang-en">All Announcements</span>
+          </h2>
+          <p class="announcements-archive__sub">
+            <span class="lang-zh">以下為本站目前所有公告列表（與上方「最新公告」資料來源相同）</span>
+            <span class="lang-en">Complete list of announcements (same data source as Latest News).</span>
+          </p>
+        </div>
+        <div class="card announcements-archive__card">
+          <ul id="announcements-all" class="news" aria-busy="true">
+            <li class="news__item">
+              <div class="news__left">
+                <span class="lang-zh">載入公告中…</span>
+                <span class="lang-en">Loading…</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="container footer__inner">
         <div>
@@ -357,11 +347,13 @@
           <span class="lang-en">Copyright © College of Management, Fu Jen Catholic University</span>
         </div>
         <div class="footer__links">
+          <a href="./admin.html"><span class="lang-zh">公告後台</span><span class="lang-en">News admin</span></a>
           <a href="#"><span class="lang-zh">聯絡我們</span><span class="lang-en">Contact Us</span></a>
         </div>
       </div>
     </footer>
 
+    <script src="./assets/js/announcements.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
