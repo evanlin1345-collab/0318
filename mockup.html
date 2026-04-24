@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>口袋名師 iOS 擬真 Mockup</title>
+    <link rel="stylesheet" href="./assets/css/mockup.css" />
+  </head>
+  <body>
+    <main class="mockup-page">
+      <header class="hero">
+        <h1>口袋名師｜iOS 擬真互動版</h1>
+        <p>點選下方流程按鈕，查看五個畫面的 iPhone 風格轉場與學生導向 UI。</p>
+      </header>
+
+      <section class="simulator" aria-label="手機互動模擬">
+        <aside class="flow-control">
+          <button class="flow-btn is-active" data-screen="screen-1">1. 課程大廳</button>
+          <button class="flow-btn" data-screen="screen-2">2. 身分與年級設定</button>
+          <button class="flow-btn" data-screen="screen-3">3. AI 教室互動</button>
+          <button class="flow-btn" data-screen="screen-4">4. 會員設定</button>
+          <button class="flow-btn" data-screen="screen-5">5. 學習紀錄</button>
+          <p class="flow-tip">提示：可直接點手機內卡片與按鈕切換流程。</p>
+        </aside>
+
+        <div class="phone phone--ios17">
+          <div class="dynamic-island" aria-hidden="true"></div>
+          <div class="status-bar ios">
+            <span class="status-time">21:04</span>
+            <div class="status-icons" aria-hidden="true">
+              <span class="battery">
+                <span class="battery-text">60</span>
+                <span class="bat-cap"></span>
+              </span>
+            </div>
+          </div>
+
+          <section class="screen is-active" id="screen-1">
+            <div class="hero-card">
+              <p class="eyebrow">Pocket Mentor</p>
+              <h2>口袋名師</h2>
+              <p>今天學什麼？選科目就能立即開課</p>
+            </div>
+            <div class="quick-chips">
+              <span>🔥 熱門</span><span>🎯 客製</span><span>💡 即時糾錯</span>
+            </div>
+            <div class="subject-grid">
+              <button class="subject-card" data-go="screen-2"><span>數學</span><small>林老師 AI</small><em>開始</em></button>
+              <button class="subject-card"><span>英文</span><small>Mia AI</small></button>
+              <button class="subject-card"><span>理化</span><small>Kevin AI</small></button>
+              <button class="subject-card"><span>國文</span><small>Rita AI</small></button>
+              <button class="subject-card"><span>社會</span><small>Chris AI</small></button>
+              <button class="subject-card"><span>生物</span><small>Nora AI</small></button>
+            </div>
+            <button class="floating-settings" data-go="screen-4" aria-label="開啟設定">⚙</button>
+          </section>
+
+          <section class="screen" id="screen-2">
+            <div class="title-block">
+              <h3>數學 AI 教室</h3>
+              <p>步驟 1/2：設定學習程度</p>
+            </div>
+            <div class="panel">
+              <label>學習階段</label>
+              <div class="chips">
+                <button>國小</button><button class="is-selected">國中</button><button>高中</button><button>大學</button>
+              </div>
+            </div>
+            <div class="panel">
+              <label>年級</label>
+              <div class="select-like">國二 ▾</div>
+              <p class="hint">我們會依你的程度調整題目深度與講解節奏。</p>
+            </div>
+            <button class="cta" data-go="screen-3">確認並進入教室</button>
+            <a class="back-link" href="#" data-go="screen-1">返回課程大廳</a>
+          </section>
+
+          <section class="screen" id="screen-3">
+            <div class="class-head">
+              <strong>今日主題：一次函數</strong>
+              <small>林老師 AI · 即時輔導</small>
+            </div>
+            <div class="teaching-zone">
+              <div class="board">y = 2x + 3<br />斜率 m = 2，截距 b = 3</div>
+              <div class="progress"><span style="width: 63%"></span></div>
+            </div>
+            <div class="chat-zone">
+              <p class="msg student">這題斜率怎麼看？</p>
+              <p class="msg ai">先看 x 每增加 1，y 增加多少，增加量就是斜率。</p>
+              <p class="msg ai">你很接近了！試著比較 (1,5) 與 (2,7)。</p>
+            </div>
+            <div class="chat-input">
+              <button>＋</button>
+              <input type="text" value="輸入你的問題..." aria-label="問題輸入" />
+              <button>送出</button>
+            </div>
+          </section>
+
+          <section class="screen" id="screen-4">
+            <div class="title-block">
+              <h3>會員與學生認證</h3>
+              <p>學生完成認證可免費試用一個月</p>
+            </div>
+            <div class="plan-card">
+              <h4>完整方案 NT$299 / 月</h4>
+              <ul>
+                <li>不限次數 AI 問答</li>
+                <li>全科名師模型</li>
+                <li>學習紀錄雲端同步</li>
+              </ul>
+            </div>
+            <div class="panel">
+              <label>上傳學生證</label>
+              <div class="upload-box">拖曳或點擊上傳（JPG / PNG）</div>
+              <div class="tags"><span>審核中</span><span class="ok">已通過</span></div>
+            </div>
+            <button class="cta">完成認證，免費試用一個月</button>
+          </section>
+
+          <section class="screen" id="screen-5">
+            <div class="title-block compact">
+              <h3>學習紀錄</h3>
+              <div class="chips small"><button class="is-selected">全部</button><button>本週</button><button>本月</button></div>
+            </div>
+            <section class="history-list">
+              <h4>上課紀錄</h4>
+              <ul>
+                <li><span>04/22 數學</span><em>45 分鐘｜完成 80%</em></li>
+                <li><span>04/21 英文</span><em>30 分鐘｜完成 65%</em></li>
+                <li><span>04/20 理化</span><em>50 分鐘｜完成 72%</em></li>
+              </ul>
+            </section>
+            <section class="note-box">
+              <h4>重點紀錄（客製化筆記）</h4>
+              <p>・斜率判讀：先看 x 增量，再看 y 的變化量。</p>
+              <p>・英文文法：現在完成式與過去式情境差異。</p>
+            </section>
+          </section>
+
+          <nav class="bottom-nav" aria-label="主選單">
+            <a class="is-active" href="#" data-go="screen-1">課程</a>
+            <a href="#" data-go="screen-5">紀錄</a>
+            <a href="#" data-go="screen-3">測驗</a>
+          </nav>
+          <div class="home-indicator" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+    <script src="./assets/js/mockup.js"></script>
+  </body>
+</html>
