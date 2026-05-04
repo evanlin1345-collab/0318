@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pocket Mentor Pro</title>
+    <link rel="stylesheet" href="./assets/css/app-class-vs-test.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="phone">
+        <header class="status-bar">
+          <span>22:46</span>
+          <span class="island"></span>
+          <span>5G 92%</span>
+        </header>
+
+        <!-- Login -->
+        <section id="screen-login" class="screen is-active">
+          <div class="hero-card">
+            <p class="kicker">Pocket Mentor Pro</p>
+            <h1>口袋名師</h1>
+            <p>登入後開始你的 AI 名師學習循環</p>
+          </div>
+          <article class="card">
+            <label>帳號
+              <input id="loginAccount" type="text" placeholder="student@example.com" />
+            </label>
+            <label>密碼
+              <input id="loginPassword" type="password" placeholder="••••••••" />
+            </label>
+            <button id="loginBtn" class="btn primary full">登入</button>
+            <p id="loginMsg" class="tiny">請輸入帳號密碼</p>
+          </article>
+        </section>
+
+        <!-- Home -->
+        <section id="screen-home" class="screen">
+          <div class="hero-card">
+            <p class="kicker">今日學習循環</p>
+            <h1>歡迎回來</h1>
+            <p>上課即時輔導 → 課後測驗 → 結算分析</p>
+          </div>
+          <div class="feature-grid">
+            <button class="feature-btn" data-jump="class">上課模式</button>
+            <button class="feature-btn" data-jump="test">課後測驗</button>
+            <button class="feature-btn" data-jump="analysis">學習分析</button>
+            <button class="feature-btn" data-jump="notification">推播中心</button>
+            <button class="feature-btn" data-jump="membership">會員方案</button>
+            <button class="feature-btn" data-jump="profile">個人頁</button>
+          </div>
+
+          <article class="card">
+            <h3>科目選擇</h3>
+            <div class="subject-grid">
+              <button class="subject-btn">數學</button>
+              <button class="subject-btn">英文</button>
+              <button class="subject-btn">國文</button>
+              <button class="subject-btn">理化</button>
+              <button class="subject-btn">生物</button>
+              <button class="subject-btn">地科</button>
+              <button class="subject-btn">社會</button>
+              <button class="subject-btn">歷史</button>
+            </div>
+          </article>
+          <article class="card">
+            <h3>今日任務</h3>
+            <ul>
+              <li>完成 1 回課後測驗</li>
+              <li>查看測驗結算頁與弱點建議</li>
+              <li>用推薦老師風格複習 15 分鐘</li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- Class -->
+        <section id="screen-class" class="screen">
+          <h2>上課模式（即時教學）</h2>
+          <p class="sub">上課互動不納入學習歷程分析。</p>
+          <article class="equation-card">
+            <h3>範例題：y = 2x + 3</h3>
+            <p>目標：理解斜率與截距</p>
+            <div class="mastery-track"><div id="classMastery" class="mastery-fill"></div></div>
+          </article>
+          <div class="teacher-tabs">
+            <button class="teacher-tab is-active" data-style="strict">蘇穎｜嚴謹拆解</button>
+            <button class="teacher-tab" data-style="visual">顧晨｜圖像直覺</button>
+            <button class="teacher-tab" data-style="coach">沐晴｜互動引導</button>
+          </div>
+          <article class="card chat-card">
+            <p class="bubble q">學生：斜率到底是什麼？</p>
+            <p id="classReply" class="bubble a"></p>
+            <p class="tiny">上課資料不進分析報表。</p>
+          </article>
+        </section>
+
+        <!-- Test -->
+        <section id="screen-test" class="screen">
+          <h2>課後測驗</h2>
+          <p class="sub">這裡的提交結果會進入學習歷程分析。</p>
+          <article class="card">
+            <div class="row between">
+              <h3 id="testQuestionTitle">第 1 題：一次函數斜率判讀</h3>
+              <span id="testTimer" class="timer">00:35</span>
+            </div>
+            <p class="question-text" id="testQuestionText">
+              已知直線方程式 y = -3x + 7，請問此直線的斜率是多少？並說明如何判斷。
+            </p>
+            <p id="testQuestionType">題型：觀念題</p>
+            <label>作答結果
+              <select id="resultSelect">
+                <option value="correct">答對</option>
+                <option value="wrong-calc">答錯（計算）</option>
+                <option value="wrong-concept" selected>答錯（觀念）</option>
+                <option value="wrong-reading">答錯（審題）</option>
+              </select>
+            </label>
+            <label>猶豫時間（秒）
+              <input id="hesitationInput" type="number" min="1" value="22" />
+            </label>
+            <div class="row">
+              <button id="submitAnswer" class="btn primary">提交本題</button>
+              <button id="nextQuestion" class="btn">下一題</button>
+            </div>
+            <p id="testMsg" class="tiny">尚未提交</p>
+          </article>
+          <article class="card">
+            <h3>測驗進度</h3>
+            <div class="mastery-track"><div id="testProgress" class="mastery-fill"></div></div>
+            <p id="progressText">0 / 5 題</p>
+            <button id="openSummaryBtn" class="btn full">前往測驗結算頁</button>
+          </article>
+        </section>
+
+        <!-- Test Summary -->
+        <section id="screen-summary" class="screen">
+          <h2>測驗結算頁</h2>
+          <p class="sub">本次課後測驗整體表現摘要</p>
+          <article class="card">
+            <h3>測驗成績</h3>
+            <p id="summaryScore" class="score">總分：0 / 100</p>
+            <p id="summaryAccuracy">答對率：0%</p>
+            <p id="summaryHesitation">平均猶豫時間：0 秒</p>
+          </article>
+          <article class="card">
+            <h3>結算建議</h3>
+            <ul id="summaryAdvice"></ul>
+          </article>
+          <button class="btn primary full" data-jump="analysis">查看學習分析</button>
+        </section>
+
+        <!-- Analysis -->
+        <section id="screen-analysis" class="screen">
+          <h2>學習歷程分析（僅課後測驗）</h2>
+          <article class="card">
+            <h3>答錯題型統計</h3>
+            <ul id="wrongStats"></ul>
+          </article>
+          <article class="card">
+            <h3>猶豫時間分析</h3>
+            <ul id="hesitationStats"></ul>
+          </article>
+          <article class="card">
+            <h3>推薦教學風格</h3>
+            <p id="teacherRecommend" class="recommend">分析中...</p>
+          </article>
+          <article class="card">
+            <h3>錯題回放與複習建議</h3>
+            <ul id="adviceList"></ul>
+          </article>
+        </section>
+
+        <!-- Notification Center -->
+        <section id="screen-notification" class="screen">
+          <h2>推播中心</h2>
+          <article class="card">
+            <h3>今日通知</h3>
+            <ul>
+              <li>你有 1 份課後測驗尚未完成</li>
+              <li>系統建議你先複習「觀念題」章節</li>
+              <li>今晚 21:00 可預約名師直播複習</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>提醒設定</h3>
+            <label><input type="checkbox" checked /> 測驗截止前提醒</label>
+            <label><input type="checkbox" checked /> 錯題複習提醒</label>
+            <label><input type="checkbox" /> 名師直播提醒</label>
+          </article>
+        </section>
+
+        <!-- Membership -->
+        <section id="screen-membership" class="screen">
+          <h2>會員方案與學生認證</h2>
+          <p class="sub">有學生證可啟用免費試用一個月。</p>
+          <article class="card">
+            <h3>完整方案 NT$299 / 月</h3>
+            <ul>
+              <li>不限次數 AI 問答</li>
+              <li>課後測驗與學習分析</li>
+              <li>錯題回放與個人化建議</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>學生身份認證</h3>
+            <label>姓名
+              <input id="studentName" type="text" placeholder="王小明" />
+            </label>
+            <label>學校
+              <input id="studentSchool" type="text" placeholder="XX 高中" />
+            </label>
+            <label>上傳學生證
+              <input id="studentFile" type="file" accept="image/*,.pdf" />
+            </label>
+            <button id="verifyIdentityBtn" class="btn primary full">完成認證 + 免費試用一個月</button>
+            <p id="identityMsg" class="tiny">尚未完成驗證</p>
+          </article>
+        </section>
+
+        <!-- Profile -->
+        <section id="screen-profile" class="screen">
+          <h2>個人頁</h2>
+          <article class="card">
+            <h3>學生資料</h3>
+            <p id="profileName">姓名：-</p>
+            <p id="profileSchool">學校：-</p>
+            <p>身份狀態：已驗證</p>
+          </article>
+          <article class="card">
+            <h3>會員方案</h3>
+            <p>方案：完整方案 NT$299 / 月</p>
+            <p>功能：全科 AI 輔導、課後分析、雲端同步</p>
+          </article>
+        </section>
+
+        <nav id="bottomNav" class="bottom-nav hidden">
+          <button class="nav-btn is-active" data-screen="home">首頁</button>
+          <button class="nav-btn" data-screen="class">上課</button>
+          <button class="nav-btn" data-screen="test">測驗</button>
+          <button class="nav-btn" data-screen="analysis">分析</button>
+          <button class="nav-btn" data-screen="membership">會員</button>
+        </nav>
+      </section>
+    </main>
+    <script src="./assets/js/app-class-vs-test.js"></script>
+  </body>
+</html>
