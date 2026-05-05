@@ -28,6 +28,18 @@ const identityMsg = document.getElementById("identityMsg");
 const classMastery = document.getElementById("classMastery");
 const teacherTabs = Array.from(document.querySelectorAll(".teacher-tab"));
 const classReply = document.getElementById("classReply");
+const styleTitle = document.getElementById("styleTitle");
+const styleDesc = document.getElementById("styleDesc");
+const styleUseCase = document.getElementById("styleUseCase");
+const styleImpact = document.getElementById("styleImpact");
+const styleSteps = document.getElementById("styleSteps");
+const styleExample = document.getElementById("styleExample");
+const styleChartHint = document.getElementById("styleChartHint");
+const styleKpiName = document.getElementById("styleKpiName");
+const styleKpiUseCase = document.getElementById("styleKpiUseCase");
+const styleKpiPace = document.getElementById("styleKpiPace");
+const styleKpiImpact = document.getElementById("styleKpiImpact");
+const styleCompareList = document.getElementById("styleCompareList");
 
 const testQuestionTitle = document.getElementById("testQuestionTitle");
 const testQuestionText = document.getElementById("testQuestionText");
@@ -56,9 +68,62 @@ const profileName = document.getElementById("profileName");
 const profileSchool = document.getElementById("profileSchool");
 
 const teacherStyles = {
-  strict: "蘇穎：先定義 m，再套公式驗算。每一步都可回溯。",
-  visual: "顧晨：把斜率想成線條爬升速度，先看圖再回公式。",
-  coach: "沐晴：用提問引導你自己說出關鍵，強化記憶點。",
+  strict: {
+    label: "蘇穎｜嚴謹拆解",
+    reply: "先找 y=mx+b 中的 m，再檢查每一步代入是否一致，最後用兩點驗算避免粗心。",
+    desc: "適合計算與公式混合題，強調每一步可回頭檢查，降低算錯風險。",
+    useCase: "適用情境：公式看得懂但常漏步、符號容易抄錯。",
+    impact: "預期成效：提升解題正確率、減少計算型失誤。",
+    pace: "慢-中（逐步驗算）",
+    example: "示範句：先抓 m=-3，再代 x=1 驗一次，最後用 x=2 二次驗證。",
+    steps: [
+      "步驟 1：辨識標準式中的 m 與 b，先不急著算。",
+      "步驟 2：代入一組 x 值驗證 y 的變化是否一致。",
+      "步驟 3：用第二組 x 再驗一次，確保不是碰巧答對。",
+    ],
+  },
+  visual: {
+    label: "顧晨｜圖像直覺",
+    reply: "把斜率看成線條傾斜方向：往右走一格，y 往上或往下多少，就是 m。",
+    desc: "適合觀念建立與圖像題，先用視覺理解再回到符號表示。",
+    useCase: "適用情境：看到公式就緊張、觀念抽象難想像。",
+    impact: "預期成效：提升概念理解速度，減少死背公式。",
+    pace: "中（圖像先行）",
+    example: "示範句：線往右越走越低，代表斜率是負數，且每格下降 3。",
+    steps: [
+      "步驟 1：先判斷線往右是上升或下降。",
+      "步驟 2：看『右 1 格』時 y 改變多少格。",
+      "步驟 3：把圖像語言翻成 m 的數值與正負號。",
+    ],
+  },
+  coach: {
+    label: "沐晴｜互動引導",
+    reply: "我先不給答案，先問你：在 y=-3x+7 裡，哪個數字代表每增加 1 單位 x 時的變化？",
+    desc: "適合審題與理解卡關時，透過連續提問讓你自己說出關鍵。",
+    useCase: "適用情境：題目常看錯重點、會但講不清楚原因。",
+    impact: "預期成效：提升審題精準度與口語化表達能力。",
+    pace: "中-快（高互動提問）",
+    example: "示範句：你先說 m 是哪個數字？為什麼不是 7？",
+    steps: [
+      "步驟 1：先請你重述題目，確認沒有漏看條件。",
+      "步驟 2：用兩個引導問題讓你定位核心概念。",
+      "步驟 3：你先作答，我再補強錯誤與記憶口訣。",
+    ],
+  },
+  chart: {
+    label: "程析｜圖表解釋",
+    reply: "我們把 y 值變化整理成小圖表：x 每 +1，y 每 -3，這個固定差就是斜率 m=-3。",
+    desc: "適合需要看趨勢與資料變化的同學，會把公式轉成表格與迷你圖表。",
+    useCase: "適用情境：看文字難吸收，喜歡用資料列和圖表抓規律。",
+    impact: "預期成效：加快趨勢判讀，強化跨題型遷移能力。",
+    pace: "中（圖表拆解）",
+    example: "示範句：觀察每一列 y 都固定 -3，因此 Δy/Δx = -3/1。",
+    steps: [
+      "步驟 1：列出 x 與 y 的對應表，先看規律。",
+      "步驟 2：把『x 增量』與『y 增量』做成視覺條帶。",
+      "步驟 3：用 Δy/Δx 回推斜率，確認和方程式一致。",
+    ],
+  },
 };
 
 const questions = [
@@ -101,6 +166,29 @@ function activate(screenKey) {
 
 function renderClass() {
   classMastery.style.width = `${state.classMastery}%`;
+}
+
+function renderTeacherStyle(styleKey) {
+  const style = teacherStyles[styleKey];
+  classReply.textContent = style.reply;
+  styleTitle.textContent = style.label;
+  styleDesc.textContent = style.desc;
+  styleUseCase.textContent = style.useCase;
+  styleImpact.textContent = style.impact;
+  styleSteps.innerHTML = style.steps.map((item) => `<li>${item}</li>`).join("");
+  styleExample.textContent = style.example;
+  styleKpiName.textContent = style.label;
+  styleKpiUseCase.textContent = style.useCase.replace("適用情境：", "");
+  styleKpiPace.textContent = style.pace;
+  styleKpiImpact.textContent = style.impact.replace("預期成效：", "");
+  styleChartHint.classList.toggle("hidden", styleKey !== "chart");
+}
+
+function renderStyleCompare() {
+  const compareRows = Object.values(teacherStyles).map((style) => (
+    `<li><b>${style.label}</b>｜${style.useCase.replace("適用情境：", "")}｜節奏：${style.pace}</li>`
+  ));
+  styleCompareList.innerHTML = compareRows.join("");
 }
 
 function renderQuestion() {
@@ -157,7 +245,8 @@ function renderAnalysis() {
   const label = { calc: "計算", concept: "觀念", reading: "審題" };
 
   let recommend = "蘇穎｜嚴謹拆解";
-  if (wrongRank[0][0] === "concept" || hesitationRank[0][0] === "concept") recommend = "顧晨｜圖像直覺";
+  if (wrongRank[0][0] === "concept" && hesitationRank[0][1] >= 20) recommend = "程析｜圖表解釋";
+  else if (wrongRank[0][0] === "concept" || hesitationRank[0][0] === "concept") recommend = "顧晨｜圖像直覺";
   if (wrongRank[0][0] === "reading") recommend = "沐晴｜互動引導";
   teacherRecommend.textContent = `目前最適合：${recommend}`;
 
@@ -205,7 +294,7 @@ teacherTabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     teacherTabs.forEach((t) => t.classList.remove("is-active"));
     tab.classList.add("is-active");
-    classReply.textContent = teacherStyles[tab.dataset.style];
+    renderTeacherStyle(tab.dataset.style);
     state.classMastery = Math.min(100, state.classMastery + 1);
     renderClass();
   });
@@ -237,7 +326,8 @@ nextQuestion.addEventListener("click", () => {
 openSummaryBtn.addEventListener("click", () => activate("summary"));
 
 // Initial render
-classReply.textContent = teacherStyles.strict;
+renderTeacherStyle("strict");
+renderStyleCompare();
 renderClass();
 renderQuestion();
 renderProgress();

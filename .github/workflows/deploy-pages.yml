@@ -31,8 +31,11 @@ jobs:
         run: |
           mkdir -p _site/assets/css _site/assets/js _site/assets/img
           cp mockup.html _site/index.html
+          cp app-class-vs-test.html _site/app-class-vs-test.html
           cp assets/css/mockup.css _site/assets/css/mockup.css
+          cp assets/css/app-class-vs-test.css _site/assets/css/app-class-vs-test.css
           cp assets/js/mockup.js _site/assets/js/mockup.js
+          cp assets/js/app-class-vs-test.js _site/assets/js/app-class-vs-test.js
           if [ -d "assets/img" ]; then cp -r assets/img/* _site/assets/img/; fi
 
       - name: Upload artifact

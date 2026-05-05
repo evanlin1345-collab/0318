@@ -77,6 +77,18 @@
         <section id="screen-class" class="screen">
           <h2>上課模式（即時教學）</h2>
           <p class="sub">上課互動不納入學習歷程分析。</p>
+          <article class="card style-spotlight">
+            <h3>名師教學風格引擎（核心差異）</h3>
+            <p class="style-spotlight-copy">
+              同一題會依學習狀態切換解法語氣、提示節奏與講解媒介，強化「因材施教」。
+            </p>
+            <div class="style-kpi-grid">
+              <p><span>目前風格</span><b id="styleKpiName">蘇穎｜嚴謹拆解</b></p>
+              <p><span>適用卡點</span><b id="styleKpiUseCase">公式混淆、容易算錯</b></p>
+              <p><span>教學節奏</span><b id="styleKpiPace">慢-中（逐步驗算）</b></p>
+              <p><span>預期提升</span><b id="styleKpiImpact">降低計算失誤與漏步</b></p>
+            </div>
+          </article>
           <article class="equation-card">
             <h3>範例題：y = 2x + 3</h3>
             <p>目標：理解斜率與截距</p>
@@ -86,11 +98,32 @@
             <button class="teacher-tab is-active" data-style="strict">蘇穎｜嚴謹拆解</button>
             <button class="teacher-tab" data-style="visual">顧晨｜圖像直覺</button>
             <button class="teacher-tab" data-style="coach">沐晴｜互動引導</button>
+            <button class="teacher-tab" data-style="chart">程析｜圖表解釋</button>
           </div>
           <article class="card chat-card">
             <p class="bubble q">學生：斜率到底是什麼？</p>
             <p id="classReply" class="bubble a"></p>
             <p class="tiny">上課資料不進分析報表。</p>
+          </article>
+          <article class="card style-detail-card">
+            <h3 id="styleTitle">蘇穎｜嚴謹拆解</h3>
+            <p id="styleDesc" class="style-desc"></p>
+            <p id="styleUseCase" class="style-meta"></p>
+            <p id="styleImpact" class="style-meta"></p>
+            <ul id="styleSteps" class="style-steps"></ul>
+            <p id="styleExample" class="style-example"></p>
+            <div id="styleChartHint" class="chart-hint hidden">
+              <p class="chart-title">圖表解讀範例：x 每 +1，y 每 -3</p>
+              <div class="mini-bars">
+                <div class="mini-bar"><span>x=0</span><i style="--w: 78%"></i><b>y=7</b></div>
+                <div class="mini-bar"><span>x=1</span><i style="--w: 52%"></i><b>y=4</b></div>
+                <div class="mini-bar"><span>x=2</span><i style="--w: 28%"></i><b>y=1</b></div>
+              </div>
+            </div>
+          </article>
+          <article class="card style-compare-card">
+            <h3>四種風格差異比較</h3>
+            <ul id="styleCompareList"></ul>
           </article>
         </section>
 
