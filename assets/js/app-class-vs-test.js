@@ -205,6 +205,9 @@ function activate(screenKey) {
   Object.values(screens).forEach((screen) => screen.classList.remove("is-active"));
   screens[screenKey].classList.add("is-active");
   navButtons.forEach((btn) => btn.classList.toggle("is-active", btn.dataset.screen === screenKey));
+  if (window.location.hash !== `#${screenKey}`) {
+    window.location.hash = screenKey;
+  }
   if (screenKey === "summary") renderSummary();
   if (screenKey === "analysis") renderAnalysis();
 }
@@ -307,6 +310,15 @@ function renderAnalysis() {
   `;
 }
 
+function applyInitialScreenFromHash() {
+  const hash = window.location.hash.replace("#", "").trim();
+  if (!hash || !screens[hash]) return;
+  if (hash !== "login") {
+    bottomNav.classList.remove("hidden");
+  }
+  activate(hash);
+}
+
 // Navigation
 navButtons.forEach((btn) => btn.addEventListener("click", () => activate(btn.dataset.screen)));
 jumpButtons.forEach((btn) => btn.addEventListener("click", () => activate(btn.dataset.jump)));
@@ -381,3 +393,4 @@ renderStyleCompare();
 renderClass();
 renderQuestion();
 renderProgress();
+applyInitialScreenFromHash();
