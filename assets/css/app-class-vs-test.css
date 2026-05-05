@@ -277,6 +277,51 @@ input[type="checkbox"] {
   margin-bottom: 5px;
   font-size: 0.85rem;
 }
+.tone-tag {
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  padding: 3px 8px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+.solve-question {
+  margin: 2px 0 8px;
+  color: #334155;
+  line-height: 1.45;
+}
+.solve-intro {
+  margin: 0 0 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+}
+.solve-steps {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.65;
+  color: #0f172a;
+}
+.solve-pitfall,
+.solve-wrapup {
+  margin: 8px 0 0;
+  border-radius: 8px;
+  padding: 7px 8px;
+  font-size: 0.85rem;
+}
+.solve-pitfall {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+}
+.solve-wrapup {
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1e3a8a;
+}
 .hidden { display: none; }
 
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }

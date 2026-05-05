@@ -40,6 +40,11 @@ const styleKpiUseCase = document.getElementById("styleKpiUseCase");
 const styleKpiPace = document.getElementById("styleKpiPace");
 const styleKpiImpact = document.getElementById("styleKpiImpact");
 const styleCompareList = document.getElementById("styleCompareList");
+const styleToneTag = document.getElementById("styleToneTag");
+const solveIntro = document.getElementById("solveIntro");
+const solveSteps = document.getElementById("solveSteps");
+const solvePitfall = document.getElementById("solvePitfall");
+const solveWrapup = document.getElementById("solveWrapup");
 
 const testQuestionTitle = document.getElementById("testQuestionTitle");
 const testQuestionText = document.getElementById("testQuestionText");
@@ -76,6 +81,16 @@ const teacherStyles = {
     impact: "預期成效：提升解題正確率、減少計算型失誤。",
     pace: "慢-中（逐步驗算）",
     example: "示範句：先抓 m=-3，再代 x=1 驗一次，最後用 x=2 二次驗證。",
+    tone: "嚴謹板書",
+    solveIntro: "我們把式子對齊一次函數標準式 y = mx + b，先找位置，再談意義。",
+    solveStepsDetailed: [
+      "步驟 A：對照 y = mx + b，可直接讀到 m = -3、b = 7。",
+      "步驟 B：解釋 m 的意義：x 每增加 1，y 就改變 -3（下降 3）。",
+      "步驟 C：用驗算確認：x=0 時 y=7；x=1 時 y=4，確實下降 3。",
+      "步驟 D：再次驗證：x=2 時 y=1，仍維持每次 -3，因此斜率穩定。",
+    ],
+    pitfall: "常見錯誤：把截距 7 誤當斜率。規則是 x 前面的係數才是斜率。",
+    wrapup: "結論：斜率為 -3，判斷依據是『x 的係數』與『Δy/Δx 固定為 -3』。",
     steps: [
       "步驟 1：辨識標準式中的 m 與 b，先不急著算。",
       "步驟 2：代入一組 x 值驗證 y 的變化是否一致。",
@@ -90,6 +105,16 @@ const teacherStyles = {
     impact: "預期成效：提升概念理解速度，減少死背公式。",
     pace: "中（圖像先行）",
     example: "示範句：線往右越走越低，代表斜率是負數，且每格下降 3。",
+    tone: "圖像比喻",
+    solveIntro: "把公式想成一條線：從 y 軸 7 的位置出發，往右走就往下滑。",
+    solveStepsDetailed: [
+      "步驟 A：先看正負號，m=-3 代表線往右是下降，不是上升。",
+      "步驟 B：看絕對值 3，代表往右 1 格，垂直方向要下 3 格。",
+      "步驟 C：從點 (0,7) 出發，往右 1 到 (1,4)，再往右 1 到 (2,1)。",
+      "步驟 D：每一段都同樣下降 3，所以斜率固定是 -3。",
+    ],
+    pitfall: "常見錯誤：只看數字 3 忘了負號，導致把下降線看成上升線。",
+    wrapup: "結論：這是一條由左上往右下的線，斜率就是 -3。",
     steps: [
       "步驟 1：先判斷線往右是上升或下降。",
       "步驟 2：看『右 1 格』時 y 改變多少格。",
@@ -104,6 +129,16 @@ const teacherStyles = {
     impact: "預期成效：提升審題精準度與口語化表達能力。",
     pace: "中-快（高互動提問）",
     example: "示範句：你先說 m 是哪個數字？為什麼不是 7？",
+    tone: "蘇格拉底提問",
+    solveIntro: "我先不直接給答案，先用提問把你帶到正確判斷路線。",
+    solveStepsDetailed: [
+      "步驟 A：先回答：式子中哪個數字跟 x 綁在一起？（提示：係數）",
+      "步驟 B：再回答：當 x 增加 1，y 會跟著怎麼變？",
+      "步驟 C：你口頭說一次：因為 x 的係數是 -3，所以斜率是 -3。",
+      "步驟 D：我補強觀念：+7 是起始高度（截距），不是變化速度（斜率）。",
+    ],
+    pitfall: "常見錯誤：答對但無法解釋原因。要能說出「為什麼」才算真正懂。",
+    wrapup: "結論：你不只知道答案是 -3，也能完整說出判斷邏輯。",
     steps: [
       "步驟 1：先請你重述題目，確認沒有漏看條件。",
       "步驟 2：用兩個引導問題讓你定位核心概念。",
@@ -118,6 +153,16 @@ const teacherStyles = {
     impact: "預期成效：加快趨勢判讀，強化跨題型遷移能力。",
     pace: "中（圖表拆解）",
     example: "示範句：觀察每一列 y 都固定 -3，因此 Δy/Δx = -3/1。",
+    tone: "數據圖表",
+    solveIntro: "我們把公式轉成資料表，透過連續差分讀出斜率。",
+    solveStepsDetailed: [
+      "步驟 A：先列三組資料：x=0,1,2 對應 y=7,4,1。",
+      "步驟 B：算相鄰變化：Δx 都是 +1；Δy 都是 -3。",
+      "步驟 C：代入斜率公式 m = Δy/Δx = -3/1 = -3。",
+      "步驟 D：因為每段比值一致，所以整條線斜率固定為 -3。",
+    ],
+    pitfall: "常見錯誤：只看單點不看相鄰差，會看不出『固定變化率』。",
+    wrapup: "結論：用表格與條帶圖都可驗證斜率是 -3，圖表和公式一致。",
     steps: [
       "步驟 1：列出 x 與 y 的對應表，先看規律。",
       "步驟 2：把『x 增量』與『y 增量』做成視覺條帶。",
@@ -181,6 +226,11 @@ function renderTeacherStyle(styleKey) {
   styleKpiUseCase.textContent = style.useCase.replace("適用情境：", "");
   styleKpiPace.textContent = style.pace;
   styleKpiImpact.textContent = style.impact.replace("預期成效：", "");
+  styleToneTag.textContent = style.tone;
+  solveIntro.textContent = style.solveIntro;
+  solveSteps.innerHTML = style.solveStepsDetailed.map((item) => `<li>${item}</li>`).join("");
+  solvePitfall.textContent = `老師提醒：${style.pitfall}`;
+  solveWrapup.textContent = `老師總結：${style.wrapup}`;
   styleChartHint.classList.toggle("hidden", styleKey !== "chart");
 }
 
